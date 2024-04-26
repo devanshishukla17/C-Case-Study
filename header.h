@@ -1,12 +1,34 @@
 #ifndef HEADER_H
 #define HEADER_H
 
-#define MAX_STUDENTS 10
+
 #define MAX_SUBJECTS 5
 
-int get_num_students(void);
-void get_student_details(char names[][100], int isa1[][MAX_SUBJECTS], int isa2[][MAX_SUBJECTS], int esa[][MAX_SUBJECTS], int internal[][MAX_SUBJECTS], int credits[][MAX_SUBJECTS], int num_students);
-float calculate_sgpa(int isa1[][MAX_SUBJECTS], int isa2[][MAX_SUBJECTS], int esa[][MAX_SUBJECTS], int internal[][MAX_SUBJECTS], int credits[][MAX_SUBJECTS], int num_students);
-void display_grade_card(char name[], int isa1[][MAX_SUBJECTS], int isa2[][MAX_SUBJECTS], int esa[][MAX_SUBJECTS], int internal[][MAX_SUBJECTS], int credits[][MAX_SUBJECTS], int num_students);
+
+
+
+struct Exams{
+  int ISA1[MAX_SUBJECTS];
+  int ISA2[MAX_SUBJECTS];
+  int ESA[MAX_SUBJECTS];
+  int Assignment[MAX_SUBJECTS];
+};
+
+struct Subject{
+  int credits[MAX_SUBJECTS];
+  struct Exams exams;
+  int grade_points;
+};
+
+
+struct Student {
+  char name[100];
+  struct Subject s[MAX_SUBJECTS];
+  int total_credits;
+};
+
+int get_student_details(struct Student *student);
+float calculate_sgpa(struct Student *student);
+void display_grade_card(struct Student *student);
 
 #endif

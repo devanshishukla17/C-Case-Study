@@ -3,20 +3,18 @@
 #include "header.h"
 
 int main() {
-    int num_students = get_num_students();
 
-    if (num_students == -1) {
-        return 1; // Exit with error
-    }
 
-    char student_names[MAX_STUDENTS][100];
-    int isa1[MAX_STUDENTS][MAX_SUBJECTS], isa2[MAX_STUDENTS][MAX_SUBJECTS];
-    int esa[MAX_STUDENTS][MAX_SUBJECTS], internal[MAX_STUDENTS][MAX_SUBJECTS];
-    int credits[MAX_STUDENTS][MAX_SUBJECTS];
+    struct Student student;
 
-    get_student_details(student_names, isa1, isa2, esa, internal, credits, num_students);
+    int a= get_student_details(&student);
 
-    float sgpa = calculate_sgpa(isa1, isa2, esa, internal, credits, num_students);
+if (a=1)
+    return 0;
+    
+    float sgpa = calculate_sgpa(&student);
+
+    display_grade_card(&student);
 
     if (sgpa == -1.0f) {
         printf("Error: No credits entered.\n");
